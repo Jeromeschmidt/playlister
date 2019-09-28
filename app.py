@@ -40,6 +40,12 @@ def playlists_new():
     """Create a new playlist."""
     return render_template('playlists_new.html', playlist={}, title='New Playlist')
 
+@app.route('/playlists/<playlist_id>')
+def playlists_show(playlist_id):
+    """Show a single playlist."""
+    playlist = playlists.find_one({'_id': ObjectId(playlist_id)})
+    return render_template('playlists_show.html', playlist=playlist)
+
 @app.route('/playlists/<playlist_id>', methods=['POST'])
 def playlists_update(playlist_id):
     """Submit an edited playlist."""
