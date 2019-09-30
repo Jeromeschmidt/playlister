@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 
 host = os.environ.get('MONGODB_URI')
-client = MongoClient(host=f'{host}?retryWrites=false')
+client = MongoClient(host=f'{host}?retryWrites=true')
 db = client.get_default_database()
 playlists = db.playlists
 comments = db.comments
